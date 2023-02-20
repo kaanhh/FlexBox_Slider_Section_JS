@@ -37,26 +37,26 @@
     3. Wenn der Startindex größer als die Anzahl der Items ist, dann setze den Startindex auf 0. Damit wird von vorne begonnen.
     4. Zeige die nächsten zwei Items an mit der Funktion showFlexItems()
 */
-    function vorwaerts() {  // 3 
-
-        if(mobile == true){
-            hideFlexItems1(currentStartIndex);  
-            currentStartIndex = currentStartIndex + 1;
-            if (currentStartIndex >= flexItems.length) {
-                currentStartIndex = 0;
-            } 
-            showFlexItems1(currentStartIndex); 
-        } else {
-            hideFlexItems2(currentStartIndex);  // 3.1             Bsp. 0   , snipA 
-            currentStartIndex = currentStartIndex + 2;
-        
-            if (currentStartIndex >= flexItems.length) {
-                currentStartIndex = 0;
-            }  
-            // show the next two flex items
-            showFlexItems2(currentStartIndex); // 3.5
-        }   
-    }  
+function vorwaerts() {
+    if (mobile == true) {
+      hideFlexItems1(currentStartIndex);
+      currentStartIndex = currentStartIndex + 1;
+      if (currentStartIndex >= flexItems.length) {
+        currentStartIndex = 0;
+      }
+        showFlexItems1(currentStartIndex);
+    } else {
+      hideFlexItems2(currentStartIndex);
+      currentStartIndex = currentStartIndex + 2;
+  
+      if (currentStartIndex >= flexItems.length) {
+        currentStartIndex = 0;
+      }
+      setTimeout(function() {
+        showFlexItems2(currentStartIndex);
+      }, 1); 
+    }
+  }
 
     function ruckwerts(){ 
         if(mobile == true){
@@ -85,6 +85,9 @@
         for (let i = startIndex; i < startIndex + 2 && i < flexItems.length; i++) { // i=0; 0 kleiner  0+2 Und 0 kleiner max. Items
             flexItems[i].classList.remove('visible');   
             flexItems[i].classList.add('invisible');
+            setTimeout(function() { 
+                flexItems[i].classList.add('invisible2');
+            }, 1);
         }
     }
 

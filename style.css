@@ -17,10 +17,21 @@
         justify-content: space-between;
     }
 
+    .items{
+      transition: all 1s ease-in;
+    }
+
+    .slider-item.active {
+      opacity: 1;
+    }
+
     .visible {
         display: block;
       } 
       .invisible {
+        opacity: 0;
+      }
+      .invisible2{
         display: none;
       }
 
@@ -40,7 +51,6 @@
     .item7 { order: 7; width: 50%; } 
 
 
-
     @media (max-width: 951px){
         .container{
             flex-direction: column;
@@ -49,4 +59,3 @@
             width:100%;
           }
     }
-
