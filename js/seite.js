@@ -1,5 +1,5 @@
 
-
+    
     const flexItems = document.querySelectorAll('.items');
 
 
@@ -29,7 +29,7 @@
             }
         }
     }
-    
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
     1. Verstecke erst die beiden sichtbaren Items
@@ -57,7 +57,7 @@
             showFlexItems2(currentStartIndex); // 3.5
         }   
     }  
-    
+
     function ruckwerts(){ 
         if(mobile == true){
             hideFlexItems1(currentStartIndex);
@@ -77,7 +77,7 @@
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    
     /* 3.1
         Dieses Snippet macht nur die aktuellen beiden sichtbaren Items unsichtbar. 
     */
@@ -113,7 +113,3 @@
         }
     }
     
-
-
-
-      
