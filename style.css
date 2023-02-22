@@ -28,12 +28,12 @@
     .visible {
         display: block;
       } 
-      .invisible {
-        opacity: 0;
-      }
-      .invisible2{
-        display: none;
-      }
+    .invisible {
+      opacity: 0;
+    }
+    .invisible2{
+      display: none;
+    }       
 
     .sliderContainer{ font-family: "Montserrat" }
     .container2 { display: flex; gap: 20px; }

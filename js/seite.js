@@ -14,7 +14,7 @@
     window.addEventListener("load", setup);
     //1.1 Wird getrigger sobald die Seite neu skaliert wird.
     window.addEventListener("resize", setup); // 1.1            Problem: Nach 3 mal wird rechts nicht angezeigt.
-
+    
     // 2 
     function setup() {
         if(window.innerWidth < 868){ // Wenn Mobilversion dann   
@@ -26,7 +26,7 @@
             mobile = false;
             for (let i = 2; i < flexItems.length; i++) {
                 flexItems[i].classList.add('invisible');
-            }
+            } 
         }
     }
 
@@ -42,28 +42,35 @@ function vorwaerts() {
       hideFlexItems1(currentStartIndex);
       currentStartIndex = currentStartIndex + 1;
       if (currentStartIndex >= flexItems.length) {
-        currentStartIndex = 0;
+        currentStartIndex = 0; 
+        //for loop which removes from all items the invisible2 class
+        for (let i = 0; i < flexItems.length; i++) {
+            flexItems[i].classList.remove('invisible2');
+        }
       }
         showFlexItems1(currentStartIndex);
-    } else {
+    } else {   
       hideFlexItems2(currentStartIndex);
       currentStartIndex = currentStartIndex + 2;
-  
-      if (currentStartIndex >= flexItems.length) {
+       if(currentStartIndex >= flexItems.length) {
         currentStartIndex = 0;
-      }
+        for (let i = 0; i < flexItems.length; i++) {
+            flexItems[i].classList.remove('invisible2');
+        }
+       }
       setTimeout(function() {
         showFlexItems2(currentStartIndex);
       }, 1); 
-    }
-  }
-
+    } 
+  }     
+    
     function ruckwerts(){ 
         if(mobile == true){
             hideFlexItems1(currentStartIndex);
             currentStartIndex -= 1;
             if (currentStartIndex < 0) {
                 currentStartIndex = flexItems.length - 1;
+
             } 
             showFlexItems1(currentStartIndex);
         } else {
@@ -71,23 +78,27 @@ function vorwaerts() {
             currentStartIndex -= 2;
             if (currentStartIndex < 0) {
                 currentStartIndex = flexItems.length - 2;
+                //add to the last two items the invisible2 class
+                for (let i = 0; i < flexItems.length; i++) {
+                    flexItems[i].classList.remove('invisible2');
+                }  
             } 
-            showFlexItems2(currentStartIndex);
+            setTimeout(function() {
+                showFlexItems2(currentStartIndex);
+              }, 1); 
         }   
-    }
+    } 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     /* 3.1
-        Dieses Snippet macht nur die aktuellen beiden sichtbaren Items unsichtbar. 
+        Dieses Snippet macht die aktuell Beiden sichtbaren Items unsichtbar. 
     */
     function hideFlexItems2(startIndex) { // 4  snipA                                 //Bsp. Startindex = 0 
         for (let i = startIndex; i < startIndex + 2 && i < flexItems.length; i++) { // i=0; 0 kleiner  0+2 Und 0 kleiner max. Items
             flexItems[i].classList.remove('visible');   
             flexItems[i].classList.add('invisible');
-            setTimeout(function() { 
-                flexItems[i].classList.add('invisible2');
-            }, 1);
+            flexItems[i].classList.add('invisible2');
         }
     }
 
@@ -98,6 +109,7 @@ function vorwaerts() {
         for (let i = startIndex; i < startIndex + 2 && i < flexItems.length; i++) { 
             flexItems[i].classList.remove('invisible');
             flexItems[i].classList.add('visible');
+            flexItems[i].classList.remove('invisible2');
         }
     }
 
