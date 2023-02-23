@@ -81,7 +81,7 @@ function vorwaerts() {
             hideFlexItems2(currentStartIndex);
             currentStartIndex -= 2;
             if (currentStartIndex < 0) {
-                currentStartIndex = flexItems.length - 2;
+                currentStartIndex = flexItems.length - 1;
                 //add to the last two items the invisible2 class
                 for (let i = 0; i < flexItems.length; i++) {
                     flexItems[i].classList.remove('invisible2');
