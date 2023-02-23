@@ -26,6 +26,7 @@
             mobile = false;
             for (let i = 2; i < flexItems.length; i++) {
                 flexItems[i].classList.add('invisible');
+                
             } 
         }
     }
@@ -63,8 +64,11 @@ function vorwaerts() {
       }, 1); 
     } 
   }     
+
+
     
     function ruckwerts(){ 
+        
         if(mobile == true){
             hideFlexItems1(currentStartIndex);
             currentStartIndex -= 1;
@@ -99,6 +103,10 @@ function vorwaerts() {
             flexItems[i].classList.remove('visible');   
             flexItems[i].classList.add('invisible');
             flexItems[i].classList.add('invisible2');
+            //setTimeout which removes again the invisible2 classes after 2 seconds
+            setTimeout(function() {
+                flexItems[i].classList.remove('invisible2');
+            }, 500);
         }
     }
 
@@ -109,7 +117,6 @@ function vorwaerts() {
         for (let i = startIndex; i < startIndex + 2 && i < flexItems.length; i++) { 
             flexItems[i].classList.remove('invisible');
             flexItems[i].classList.add('visible');
-            flexItems[i].classList.remove('invisible2');
         }
     }
 
@@ -117,7 +124,7 @@ function vorwaerts() {
 
     function hideFlexItems1(startIndex) { // 4  snipA                                 //Bsp. Startindex = 0 
         for (let i = startIndex; i < startIndex + 1 && i < flexItems.length; i++) { // i=0; 0 kleiner  0+2 Und 0 kleiner max. Items
-            flexItems[i].classList.remove('visible');   
+            flexItems[i].classList.remove('visible');  
             flexItems[i].classList.add('invisible');
         }
     }
