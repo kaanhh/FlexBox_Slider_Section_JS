@@ -17,12 +17,22 @@
         justify-content: space-between;
     }
 
+    .items{
+      transition: all 0.8s ease-in;
+    }
+
     .visible {
         display: block;
+        opacity: 1;
       } 
-      .invisible {
-        display: none;
-      }
+    .invisible {
+      opacity: 0;
+      position:absolute;
+     
+    }
+    .invisible2{
+      display: none;
+    }       
 
     .sliderContainer{ font-family: "Montserrat" }
     .container2 { display: flex; gap: 20px; }
@@ -38,7 +48,6 @@
     .item5 { order: 5; width: 50%; } 
     .item6 { order: 6; width: 50%; } 
     .item7 { order: 7; width: 50%; } 
-
 
 
     @media (max-width: 951px){
