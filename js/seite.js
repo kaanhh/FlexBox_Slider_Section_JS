@@ -2,7 +2,6 @@
     
     const flexItems = document.querySelectorAll('.items');
 
-
     // 0 Wird getriggert sobald ein Klick auf das Bild getätigt wird.
     const nextArrow = document.getElementById('nextArrow').addEventListener ('click', vorwaerts); // A
     const prevArrow = document.getElementById('prevArrow').addEventListener('click', ruckwerts); // B
@@ -13,7 +12,7 @@
     // 1 Wird getriggert sobald die Seite geladen wird.
     window.addEventListener("load", setup);
     //1.1 Wird getrigger sobald die Seite neu skaliert wird.
-    window.addEventListener("resize", setup); // 1.1            Problem: Nach 3 mal wird rechts nicht angezeigt.
+    //window.addEventListener("resize", setup); // 1.1            Problem: Nach 3 mal wird rechts nicht angezeigt.
     
     // 2 
     function setup() {
@@ -22,12 +21,24 @@
             for (let i = 1; i < flexItems.length; i++) {
                 flexItems[i].classList.add('invisible');
             }
+            for (let i = 1; i < flexItems.length; i++) {
+            setTimeout(function() {
+                flexItems[i].classList.add('takeAway');
+                flexItems[i].classList.remove('invisible2');
+            }, 800);
+            }
         } else { // Wenn Desktopversion dann
             mobile = false;
+            flexItems[1].classList.remove('invisible2');
             for (let i = 2; i < flexItems.length; i++) {
                 flexItems[i].classList.add('invisible');
-                
             } 
+            for (let i = 2; i < flexItems.length; i++) {
+                setTimeout(function() {
+                    flexItems[i].classList.add('takeAway');
+                    flexItems[i].classList.remove('invisible2');
+                }, 800);
+            }
         }
     }
 
@@ -65,10 +76,12 @@ function vorwaerts() {
     } 
   }     
 
-
-    
     function ruckwerts(){ 
-        
+        setTimeout(function() {
+            for (let i = 0; i < flexItems.length; i++) {
+                flexItems[i].classList.remove('invisible2');
+            }
+        }, 1);
         if(mobile == true){
             hideFlexItems1(currentStartIndex);
             currentStartIndex -= 1;
@@ -82,7 +95,6 @@ function vorwaerts() {
             currentStartIndex -= 2;
             if (currentStartIndex < 0) {
                 currentStartIndex = flexItems.length - 1;
-                //add to the last two items the invisible2 class
                 for (let i = 0; i < flexItems.length; i++) {
                     flexItems[i].classList.remove('invisible2');
                 }  
@@ -103,10 +115,11 @@ function vorwaerts() {
             flexItems[i].classList.remove('visible');   
             flexItems[i].classList.add('invisible');
             flexItems[i].classList.add('invisible2');
+            flexItems[i].classList.add('takeAway');
             //setTimeout which removes again the invisible2 classes after 2 seconds
-            setTimeout(function() {
-                flexItems[i].classList.remove('invisible2');
-            }, 500);
+            setTimeout(() => {
+                item.classList.remove('invisible2');
+              }, 500);
         }
     }
 
@@ -117,6 +130,7 @@ function vorwaerts() {
         for (let i = startIndex; i < startIndex + 2 && i < flexItems.length; i++) { 
             flexItems[i].classList.remove('invisible');
             flexItems[i].classList.add('visible');
+            flexItems[i].classList.remove('takeAway');
         }
     }
 
@@ -132,6 +146,7 @@ function vorwaerts() {
         for (let i = startIndex; i < startIndex + 1 && i < flexItems.length; i++) { 
             flexItems[i].classList.remove('invisible');
             flexItems[i].classList.add('visible');
+
         }
     }
     
